@@ -7,17 +7,17 @@ import DataFlowTransition from "@/components/ui/DataFlowTransition";
 import CTASection from "@/components/ui/CTASection";
 import Footer from "@/components/ui/Footer";
 import NewheroSection from "@/components/hero/NewheroSection";
+import NewSignatureInteraction from "@/components/signature/NewSignatureInteraction";
 
 export default function Home() {
   return (
     <main className="relative">
       <Navbar />
       <NewheroSection/>
-      <HeroSection />
       <DataFlowTransition />
       <InsightFlow />
       <DashboardPreview />
-      <SignatureInteraction />
+      <NewSignatureInteraction/>
       <CTASection />
       <Footer />
     </main>

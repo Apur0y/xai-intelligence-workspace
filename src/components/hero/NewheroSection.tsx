@@ -43,7 +43,6 @@ export default function NewheroSection() {
             borderRadius: 999,
             marginBottom: 32,
           }}
-              className="z-10"
         >
           <span
             style={{
