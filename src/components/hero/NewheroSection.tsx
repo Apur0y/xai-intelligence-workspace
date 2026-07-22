@@ -1,13 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import PrimaryBtn from "../ui/PrimaryBtn";
 import GhostBtn from "../ui/GhostBtn";
 import HeroDataViz from "../ui/HeroDataViz";
 import DataParticlesScene from "../three/DataParticles";
 
 export default function NewheroSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const springY = useSpring(y, { stiffness: 50, damping: 20 });
+
   return (
     <div>
       <section
+        ref={containerRef}
         style={{
           position: "relative",
           minHeight: "100vh",
@@ -18,7 +33,6 @@ export default function NewheroSection() {
           padding: "120px 40px 80px",
           overflow: "hidden",
         }}
-    
       >
         {/* Radial gradient bg */}
         {/* <div
@@ -31,6 +45,7 @@ export default function NewheroSection() {
         /> */}
          <DataParticlesScene />
 
+        <motion.div style={{ y: springY, opacity, scale }} className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center">
         {/* Top badge */}
         <div
           style={{
@@ -43,6 +58,7 @@ export default function NewheroSection() {
             borderRadius: 999,
             marginBottom: 32,
           }}
+          className="z-10"
         >
           <span
             style={{
@@ -139,6 +155,7 @@ export default function NewheroSection() {
             </svg>
           </GhostBtn>
         </div>
+        </motion.div>
 
         {/* Data viz */}
         <div style={{ width: "100%", maxWidth: 940, position: "relative" }}>

@@ -19,10 +19,10 @@ export default function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all border  duration-300 ${
         scrolled
-          ? "glass shadow-lg shadow-black/20"
-          : "bg-transparent"
+          ? "glass border-gray-700 shadow-lg shadow-black/20"
+          : "bg-transparent border-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
